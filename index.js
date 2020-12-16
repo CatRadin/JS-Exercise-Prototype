@@ -101,16 +101,19 @@ Person.prototype.toString = function(){
 //prototype that lets me make the odometer go up and the tank to go down based on the miles per gallon (pMPG) being passed inside.
   
 Car.prototype.drive = function(distance){
+  //if the distance divided by miles per galon is less tan or equal the tank then I subtract distance divided by miles per gallon and subtract the number from the tank
   if((distance / this.milesPerGallon) <= this.tank ){
     this.tank = this.tank - (distance / this.milesPerGallon);
     this.odometer += distance;
     
+
+    //else the tank is empty and I say that you ran out of fuel
   }else{
     this.odometer = this.tank * this.milesPerGallon;
     this.tank = 0;
     return `I ran out of fuel at ${this.odometer} miles!`
   }
-  console.log(`${this.odometer}, ${this.tank}`)
+  
 }
   
   /*
@@ -120,16 +123,26 @@ Car.prototype.drive = function(distance){
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
+
+  // a new subclass constructor of Person! I CALL person to make an object out of baby.
  function Baby(name, age, favoriteToy) {
    Person.call(this, name, age);
    this.favoriteToy = favoriteToy;
+  }
+
+  //this is where Baby inherits all of Person's prototypes~! or rather functions!
+  Baby.prototype = Object.create(Person.prototype);
+
+//I make a new prototype to use the favorite toy we created in the subclass constructor of Person (Baby) and I return a string using this!
+  Baby.prototype.play = function() {
+    return `Playing with ${this.favoriteToy}`;
   }
  
   
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
+    1. Global binding
     2. 
     3. 
     4. 

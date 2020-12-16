@@ -39,12 +39,32 @@ function Airplane(name) {
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
   
- function Person() {
-    
-  }
- 
- 
+  //Constructor function to build objects
 
+ function Person(pName, pAge){
+  this.name = pName,
+  this.age = pAge,
+  this.stomach = []
+ }
+
+ //prototype that checks if the stomach has less than 10 items and if does then it pushes someFood into the stomach array.
+ Person.prototype.eat = function(someFood) {
+  if(this.stomach.length < 10){
+    this.stomach.push(someFood);
+  } else {
+  console.log();
+  }
+}
+
+//this prototype empties the array using .length set to 0
+Person.prototype.poop = function(){
+this.stomach.length = 0;
+}
+ 
+//this prototype creates a string to return with the pName and pAge being passed inside as argument.
+Person.prototype.toString = function(){
+  return `${this.name} and ${this.age}`;
+}
   
   
   

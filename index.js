@@ -82,9 +82,21 @@ Person.prototype.toString = function(){
       - STRETCH: A car which runs out of `fuel` while driving can't drive any more distance:
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
-  
- function Car() {
-    
+
+  //Constructor Function to make objects
+ function Car(pModel, pMPG) {
+   this.tank = 0,
+   this.odometer = 0
+  }
+
+//prototype that lets me put gallons of gas into the tank of the cars
+  Car.prototype.fill = function (gallons){
+   return this.tank + gallons;
+  }
+
+//prototype that lets me make the odometer go up and the tank to go down based on the miles per gallon (pMPG) being passed inside.
+  Car.prototype.drive = function(distance){
+
   }
   
   

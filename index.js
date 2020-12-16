@@ -52,7 +52,7 @@ function Airplane(name) {
   if(this.stomach.length < 10){
     this.stomach.push(someFood);
   } else {
-  console.log();
+  console.log("Go poop!");
   }
 }
 
@@ -84,21 +84,34 @@ Person.prototype.toString = function(){
   */
 
   //Constructor Function to make objects
- function Car(pModel, pMPG) {
+ function Car(pModel, milesPerGallon) {
+   this.model = pModel,
+   this.milesPerGallon = milesPerGallon;
    this.tank = 0,
    this.odometer = 0
+ 
   }
 
 //prototype that lets me put gallons of gas into the tank of the cars
   Car.prototype.fill = function (gallons){
-   return this.tank + gallons;
+    this.tank += gallons;
+    
   }
 
 //prototype that lets me make the odometer go up and the tank to go down based on the miles per gallon (pMPG) being passed inside.
-  Car.prototype.drive = function(distance){
-
-  }
   
+Car.prototype.drive = function(distance){
+  if((distance / this.milesPerGallon) <= this.tank ){
+    this.tank = this.tank - (distance / this.milesPerGallon);
+    this.odometer += distance;
+    
+  }else{
+    this.odometer = this.tank * this.milesPerGallon;
+    this.tank = 0;
+    return `I ran out of fuel at ${this.odometer} miles!`
+  }
+  console.log(`${this.odometer}, ${this.tank}`)
+}
   
   /*
     TASK 3
@@ -107,8 +120,9 @@ Person.prototype.toString = function(){
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+ function Baby(name, age, favoriteToy) {
+   Person.call(this, name, age);
+   this.favoriteToy = favoriteToy;
   }
  
   

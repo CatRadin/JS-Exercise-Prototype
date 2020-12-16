@@ -113,7 +113,6 @@ Car.prototype.drive = function(distance){
     this.tank = 0;
     return `I ran out of fuel at ${this.odometer} miles!`
   }
-  
 }
   
   /*
@@ -142,10 +141,14 @@ Car.prototype.drive = function(distance){
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. Global binding
-    2. 
-    3. 
-    4. 
+
+    1. Global binding happens when the value of this is set in the scope of global. It will return the windows object(which is huge.)
+
+    2. Implicit binding happens when a function is called by dot notation. The object left of the dot gets the this scope.
+
+    3. New binding happens when a constructor function is used this refers to the specific instance of the object that is CREATED with the constructor function.
+
+    4. Explicit binding happens when JavaScript calls or applies a method.
   */
   
   
